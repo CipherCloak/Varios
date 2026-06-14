@@ -1,100 +1,128 @@
-/* Quitar esquinas redondeadas a todas las ventanas */
-* { border-radius: 0px; }
+/* =====================================================
+   GTK + XFCE 4.20 - Tema personalizado
+   ===================================================== */
 
-/* Dar color al TITLEBAR-ACTIVO */
-/********************************/
+/* -----------------------------------------------------
+   [SNIPPET] Remover esquinas redondeadas globales
+   ----------------------------------------------------- */
+* { 
+  border-radius: 0px;
+}
 
+/* -----------------------------------------------------
+   [SNIPPET] TITLEBAR - Ventana activa
+   ----------------------------------------------------- */
+/* Color base: Azul Microsoft (#0078d7) */
 headerbar {
-  /* background-image:none; */
-
-  /* Celeste */
-  background-color:#0078d7;
-
-  /* Verde lechoso */
-  background-color:#5aaa9a;
-
-  /* Teal */
-  background-color:#199ca8;
-
-  /* Naranja */
-  background-color:#ff7139;
-
-  /* Morado */
-  background-color:#8c5dd9;
-
-  /* Rojo */
-  background-color:#e82127;
-
-  /* Red Hat - Rojo+Opaco */
-  background-color: #793436;
-
-  border-radius: 1px;
+  background-color: #0078d7;
   min-height: 1px;
   padding-left: 1px;
   padding-right: 1px;
   border-radius: 1px;
-  border:1px;
+  border: 1px solid #0078d7;
 }
 
-/* Dar color al TITLEBAR-inactivo */
-/**********************************/
-
+/* -----------------------------------------------------
+   [SNIPPET] TITLEBAR - Ventana inactiva (mejorado)
+   ----------------------------------------------------- */
+/* Color base: Azul marino más notorio (#1e6f9f) */
 headerbar:backdrop {
-	
-  /* background-image:none; */
-  /*color: none;*/
-  border-radius: 1px;
-
-  /* Celeste+Gris */
-  background-color: #002f54;
-
-  /* Verde+Gris */
-  background-color: #27564c;
-
-  /* Teal+Gris */
-  background-color: #0e636a;
-
-  /* Naranja+Gris */
-  background-color: #98573d;
-
-  /* Morado+Gris */
-  background-color: #675585;
-
-  /* Rojo+Gris */
-  background-color: #793436;
-
-  /* Red Hat - Rojo+Opaco Oscuro */
-  background-color: #32090a;
-
+  background-color: #1e6f9f;   /* azul más visible que #000459 */
   min-height: 1px;
   padding-left: 1px;
   padding-right: 1px;
   border-radius: 1px;
-  border:1px;
+  border: 1px solid #1e6f9f;
 }
 
-/* Color of inactive TAB */
-/* TABs gnome-terminator */
+/* -----------------------------------------------------
+   [SNIPPET] PESTAÑAS (TABS) - Notebook
+   ----------------------------------------------------- */
+/* Pestañas inactivas - borde gris neutro */
 notebook tab {
-	padding: 0.4em;
-	border: 0;
-
-     /* Gris */
-	border-color: #444;
-	border-style: solid;
-	border-width: 1px;
+  padding: 0.4em;
+  border: 1px solid #555555;   /* ← corregido: ya no usa el azul inactivo */
 }
 
-/* Color of ACTIVE TAB */
-/* TABs gnome-terminator */
+/* Pestaña activa - borde verde lima */
 notebook tab:checked {
-     /* Verde claro */
-	border-color: #76C802;
-	border-width: 1px;
+  border: 1px solid #76C802;
 }
 
-/* Corregir separador transparente de "gnome-terminator" */
+/* -----------------------------------------------------
+   [SNIPPET] GNOME TERMINATOR - Separadores
+   ----------------------------------------------------- */
 separator {
-     /* Gris */
-     background-color: #414141;
+  background-color: #414141;
+}
+
+/* -----------------------------------------------------
+   [SNIPPET] XFCE PANEL - Iconos de plugins
+   ----------------------------------------------------- */
+/* Power Manager y Notificaciones */
+#xfce4-power-manager-plugin image,
+#xfce4-notification-plugin image {
+  -gtk-icon-theme: 'Adwaita';
+  -gtk-icon-transform: scale(0.6);
+  color: lightgrey;
+  background-color: transparent;
+}
+
+/* Control de volumen (PulseAudio) */
+#pulseaudio-button image {
+  -gtk-icon-theme: 'Adwaita';
+  -gtk-icon-transform: scale(0.7);
+  color: lightgrey;
+  background-color: transparent;
+}
+
+/* -----------------------------------------------------
+   [SNIPPET] XFWM4 - Alternador de ventanas (Alt+Tab)
+   ----------------------------------------------------- */
+/* Diálogo principal del "tabwin" */
+#xfwm-tabwin {
+  padding: 12px;
+  background-image: none;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: shade(#ffffff, 0.65);
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.8);
+  border-radius: 12px;
+  /* Tamaños de iconos y vistas previas */
+  -XfwmTabwinWidget-icon-size: 64px;
+  -XfwmTabwinWidget-preview-size: 128px;
+}
+
+/* Botones del alternador de ventanas */
+#xfwm-tabwin button {
+  background-image: none;
+  color: #ffffff;
+  font-weight: bold;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.8);
+  border: none;
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+/* Botón activo / seleccionado */
+#xfwm-tabwin button:active,
+#xfwm-tabwin button:checked,
+#xfwm-tabwin button:active:hover,
+#xfwm-tabwin button:checked:hover {
+  background: rgba(206, 206, 206, 0.3);
+}
+
+/* Botón en hover (mouse encima) */
+#xfwm-tabwin button:hover {
+  background: rgba(206, 206, 206, 0.1);
+  box-shadow: inset 0 -1px alpha(white, 0.15), 
+              inset 1px 0 alpha(white, 0.15), 
+              inset -1px 0 alpha(white, 0.15), 
+              inset 0 1px alpha(white, 0.15);
+  transition-duration: 50ms;
+}
+
+ /* Rejilla de aplicaciones en el tabwin */
+#xfwm-tabwin .tabwin-app-grid button {
+  min-width: 96px;
+  min-height: 96px;
 }

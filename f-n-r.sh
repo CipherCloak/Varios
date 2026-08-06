@@ -12,5 +12,5 @@ do
     sed -i -E 's/<section class="sect3.*" title=.+>/<section class="sect3" title="">/g' $xhtmlfile
     sed -i -E 's/<section class="sect4.*" title=.+>/<section class="sect4" title="">/g' $xhtmlfile
     sed -i -E 's/<section class="sect5.*" title=.+>/<section class="sect5" title="">/g' $xhtmlfile
-    sed -Ei 's/title="[^"]+"/title=""/g' $xhtmlfile
+    sed -i -E 's/title="[^"]+"/title=""/g' $xhtmlfile
 done
